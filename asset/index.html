@@ -22,6 +22,7 @@
             <h3>Search for a City:</h3>
           </div>
 
+          <!-- Search form -->
           <div class="card-body">
             <form class="form-inline">
               <input type="search" class="form-control" id="cityInput" />
@@ -29,22 +30,55 @@
                 <i class="fas">Search</i>
               </button>
             </form>
+
+            <!-- City list -->
+            <div class="list-group cityLists"></div>
+          </div>
+
+          <div class="card">
+            <div class="card-header subtitle">
+              <h5>Current Weather</h5>
+            </div>
+            <div class="card-body currentWeather">
+              <div class="card mb-3 currentData">
+                <div class="card-header city">City</div>
+                <div class="card-body">
+                  <div
+                    class="row row-cols-1 row-cols-sm-2 justify-content-start"
+                  >
+                    <div class="col col-sm-3">
+                      <img
+                        src="#"
+                        class="card-img-top icon"
+                        alt="Weather icon"
+                        style="display: none;"
+                      />
+                      <p class="card-text date">Date</p>
+                      <p class="card-text temp">Temp</p>
+                      <p class="card-text humid">Humidity</p>
+                      <p class="card-text wind">Wind</p>
+                      <p class="card-text">
+                        <span class="uv">Index</span> <span class="flag"></span>
+                      </p>
+                    </div>
+
+                    <!-- The Windy Map -->
+                    <div class="col col-sm-9">
+                      <div class="card-body">
+                        <div id="windy"></div>
+                        <!-- /The Windy Map -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
       </div>
     </main>
 
-    <!-- Search form -->
-    <!-- City list -->
 
-    <section>
-      <!--Current weather-->
-      <!--City Name-->
-      <!--Temp-->
-      <!--Wind-->
-      <!--Humidity-->
-      <!--UV Index-->
-    </section>
 
     <section>
       <!--5-Day Forecast-->
