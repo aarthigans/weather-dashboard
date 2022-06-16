@@ -203,5 +203,6 @@ function save_new_city(id) {
     }
 }
  $('.main').hide()
-  get_req(null, -73.92, 40.69)
+  get_req(null, -74.1725, 40.7245)
 
+  
