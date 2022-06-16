@@ -8,7 +8,7 @@ const date = moment().format('ddd, DD/MM/YYYY')
 $('img').hide()
 // Load cities if not found in LocalStorage
 if (!localStorage.getItem('world_cities')) {
-    $.getJSON('/cities.json', function (data) {
+    $.getJSON('cities.json', function (data) {
         localStorage.setItem('world_cities', JSON.stringify(data))
         world_cities = data
     })
