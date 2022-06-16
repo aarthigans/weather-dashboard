@@ -5,7 +5,26 @@ let saved_cities = []
 const api_key = 'db2e0817e0753a4bbbaf3164c30e16ba'
 const date = moment().format('ddd, DD/MM/YYYY')
 
+//Display results on click from the dropdown list
+$(document).on('click', '.results-list li', function () {
+    $('.search-results').hide()
+    save_new_city(this.id.slice(5))
+    get_req(this.id.slice(5))
 
+})
+
+//Remove item  on double click
+$(document).on('dblclick', 'td', function () {
+    $('.search-results').hide()
+    remove_city(this.parentElement.id.slice(4))
+    $(`#${this.parentElement.id}`).remove()
+})
+//Display results on click from the saved cities list
+$(document).on('click', 'td', function () {
+    $('.search-results').hide()
+    let city_id = this.parentElement.id.slice(4)
+    get_req(city_id)
+})
 
 
 function get_req(city_id, lon, lat) {
