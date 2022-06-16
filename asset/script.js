@@ -5,6 +5,35 @@ let saved_cities = []
 const api_key = 'db2e0817e0753a4bbbaf3164c30e16ba'
 const date = moment().format('ddd, DD/MM/YYYY')
 
+
+//Display found cities when the user enters 4 or more characters
+$('.form-control').keyup(function () {
+    $('.search-results').hide()
+    console.clear()
+    $('.results-list').empty()
+    if ($(this).val().length > 3) {
+        let found = false
+        for (let i in world_cities) {
+            if (world_cities[i].City.toLowerCase().includes($(this).val().toLowerCase())) {
+                found = true
+                let new_li = $(`<li id=city_${i}>${world_cities[i].City}, ${world_cities[i].Country}</li>`)
+                $('.results-list').append(new_li)
+            }
+        }
+        found ? $('.search-results').slideDown('slow') : $('.search-results').slideUp('slow')
+    }
+})
+
+//Display results on form submit and add city to local Storage
+$('form').submit((e) => {
+    e.preventDefault();
+    $('.search-results').hide()
+    if ($('.results-list li:first-child').attr('id')) {
+        save_new_city($('.results-list li:first-child').attr('id').slice(5))
+        get_req($('.results-list li:first-child').attr('id').slice(5))
+    }
+})
+
 //Display results on click from the dropdown list
 $(document).on('click', '.results-list li', function () {
     $('.search-results').hide()
