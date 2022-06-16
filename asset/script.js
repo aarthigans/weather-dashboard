@@ -5,6 +5,26 @@ let saved_cities = []
 const api_key = 'db2e0817e0753a4bbbaf3164c30e16ba'
 const date = moment().format('ddd, DD/MM/YYYY')
 
+$('img').hide()
+// Load cities if not found in LocalStorage
+if (!localStorage.getItem('world_cities')) {
+    $.getJSON('./cities.json', function (data) {
+        localStorage.setItem('world_cities', JSON.stringify(data))
+        world_cities = data
+    })
+} else {
+    world_cities = JSON.parse(localStorage.getItem('world_cities'))
+}
+// Load saved cities from Local Storage if found
+if (localStorage.getItem('saved_cities')) {
+    saved_cities = JSON.parse(localStorage.getItem('saved_cities'))
+    for (let city of saved_cities) {
+        let new_row = $(`<tr id=row_${city.id}></tr>`)
+        let new_data = $(`<td class="text-center">${city.City},${city.Country}</td>`)
+        new_row.append(new_data)
+        $('tbody').append(new_row)
+    }
+}
 
 //Display found cities when the user enters 4 or more characters
 $('.form-control').keyup(function () {
@@ -129,8 +149,8 @@ function get_req(city_id, lon, lat) {
                 uv_color = '#d39dd3'
                 break;
         }
-        let uvi = $(`<span style="background-color:${uv_color}">${response.current.uvi} </span>`)
-        $('#uv').append(uvi)
+         let uvi = $(`<span style="background-color:white">${response.current.uvi} </span>`)
+         $('#uv').append(uvi)
 
         //5 Day Forecast 
         for (let i = 1; i < 6; i++) {
@@ -182,3 +202,5 @@ function save_new_city(id) {
         $('tbody').append(new_row)
     }
 }
+$('.main').hide()
+ get_req(null, -73.9249, 40.6943)
