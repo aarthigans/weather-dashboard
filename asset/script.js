@@ -8,7 +8,7 @@ const date = moment().format('ddd, DD/MM/YYYY')
 $('img').hide()
 // Load cities if not found in LocalStorage
 if (!localStorage.getItem('world_cities')) {
-    $.getJSON('./cities.json', function (data) {
+    $.getJSON('/cities.json', function (data) {
         localStorage.setItem('world_cities', JSON.stringify(data))
         world_cities = data
     })
@@ -29,7 +29,7 @@ if (localStorage.getItem('saved_cities')) {
 //Display found cities when the user enters 4 or more characters
 $('.form-control').keyup(function () {
     $('.search-results').hide()
-    console.clear()
+     console.clear()
     $('.results-list').empty()
     if ($(this).val().length > 3) {
         let found = false
@@ -85,9 +85,9 @@ function get_req(city_id, lon, lat) {
     }
 
     //set URL for One Call API 
-    let queryURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${api_key}&units=imperial`
     //https://pro.openweathermap.org/data/2.5/forecast/hourly?lat=35&lon=139&appid={API key}
     //api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
+    let queryURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${api_key}&units=imperial `
     $.ajax({
         method: 'GET',
         url: queryURL
@@ -149,8 +149,8 @@ function get_req(city_id, lon, lat) {
                 uv_color = '#d39dd3'
                 break;
         }
-         let uvi = $(`<span style="background-color:white">${response.current.uvi} </span>`)
-         $('#uv').append(uvi)
+        let uvi = $(`<span style="background-color:white">${response.current.uvi} </span>`)
+        $('#uv').append(uvi)
 
         //5 Day Forecast 
         for (let i = 1; i < 6; i++) {
@@ -202,5 +202,6 @@ function save_new_city(id) {
         $('tbody').append(new_row)
     }
 }
-$('.main').hide()
- get_req(null, -73.9249, 40.6943)
+ $('.main').hide()
+  get_req(null, -73.92, 40.69)
+
