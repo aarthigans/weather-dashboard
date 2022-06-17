@@ -6,7 +6,7 @@ Url link: https://aarthigans.github.io/weather-dashboard
 1. Created a repository "weather-dashboard"
 2. Created HTML, css, json and js file
 
-![screen_shot]()
+![screen_shot](https://github.com/aarthigans/weather-dashboard/blob/main/image/Screenshot.png)
 
 Steps to access the application:
 
